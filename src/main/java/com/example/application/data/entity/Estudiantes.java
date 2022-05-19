@@ -9,17 +9,17 @@ import javax.persistence.Table;
 @Table(name="Estudiantes")
 public class Estudiantes {
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "estno", nullable = false)
+    private Long estno;
     private String nombre;
 
 
     public Long getId() {
-        return id;
+        return estno;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.estno = id;
     }
 
     public String getNombre() {
