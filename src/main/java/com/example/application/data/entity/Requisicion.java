@@ -3,70 +3,54 @@ package com.example.application.data.entity;
 import com.example.application.data.AbstractEntity;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
 @Table(name="Requisiciones")
-public class Requisicion{
+public class Requisicion extends AbstractEntity{
 
-    @Id
-    @Column(name = "id", nullable = false)
-    private Integer id;
 
-    public Integer getId() {
-        return id;
-    }
+    private String jefedepto = "";
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    @NotEmpty
-    private String jefeDepto = "";
+    private LocalDate fechasolicitudr;
 
-    @NotEmpty
-    private String fechaSolicitudR = "";
 
-    @NotEmpty
     private String anexo = "";
 
-    @NotEmpty
-    private Integer solicitudaPor = -1;
 
-    @NotEmpty
-    private String fechaEntrega = "";
-
-    @NotEmpty
-    private Integer recibidoPor = -1;
-
-    @NotEmpty
-    private String detalleProductosNuevos = "";
-
-    @NotEmpty
-    @Type(type="date")
-    private Date validaHasta;
+    private String solicitadapor = "";
 
 
+    private LocalDate fechaentrega;
 
-    public String getJefeDepto() {
-        return jefeDepto;
+
+    private Double recibidopor = 1.1;
+
+
+    private String detalleproductosnuevos = "";
+
+    private LocalDate validahasta;
+
+
+    public String getJefedepto() {
+        return jefedepto;
     }
 
-    public void setJefeDepto(String jefeDepto) {
-        this.jefeDepto = jefeDepto;
+    public void setJefedepto(String jefedepto) {
+        this.jefedepto = jefedepto;
     }
 
-    public String getFechaSolicitudR() {
-        return fechaSolicitudR;
+    public LocalDate getFechasolicitudr() {
+        return fechasolicitudr;
     }
 
-    public void setFechaSolicitudR(String fechaSolicitudR) {
-        this.fechaSolicitudR = fechaSolicitudR;
+    public void setFechasolicitudr(LocalDate fechasolicitudr) {
+        this.fechasolicitudr = fechasolicitudr;
     }
 
     public String getAnexo() {
@@ -77,43 +61,43 @@ public class Requisicion{
         this.anexo = anexo;
     }
 
-    public Integer getSolicitudaPor() {
-        return solicitudaPor;
+    public String  getSolicitadapor() {
+        return solicitadapor;
     }
 
-    public void setSolicitudaPor(Integer solicitudaPor) {
-        this.solicitudaPor = solicitudaPor;
+    public void setSolicitadapor(String solicitadapor) {
+        this.solicitadapor = solicitadapor;
     }
 
-    public String getFechaEntrega() {
-        return fechaEntrega;
+    public LocalDate getFechaentrega() {
+        return fechaentrega;
     }
 
-    public void setFechaEntrega(String fechaEntrega) {
-        this.fechaEntrega = fechaEntrega;
+    public void setFechaentrega(LocalDate fechaentrega) {
+        this.fechaentrega = fechaentrega;
     }
 
-    public Integer getRecibidoPor() {
-        return recibidoPor;
+    public Double getRecibidopor() {
+        return recibidopor;
     }
 
-    public void setRecibidoPor(Integer recibidoPor) {
-        this.recibidoPor = recibidoPor;
+    public void setRecibidopor(Double recibidopor) {
+        this.recibidopor = recibidopor;
     }
 
-    public String getDetalleProductosNuevos() {
-        return detalleProductosNuevos;
+    public String getDetalleproductosnuevos() {
+        return detalleproductosnuevos;
     }
 
-    public void setDetalleProductosNuevos(String detalleProductosNuevos) {
-        this.detalleProductosNuevos = detalleProductosNuevos;
+    public void setDetalleproductosnuevos(String detalleproductosnuevos) {
+        this.detalleproductosnuevos = detalleproductosnuevos;
     }
 
-    public Date getValidaHasta() {
-        return validaHasta;
+    public LocalDate getValidahasta() {
+        return validahasta;
     }
 
-    public void setValidaHasta(Date validaHasta) {
-        this.validaHasta = validaHasta;
+    public void setValidahasta(LocalDate validahasta) {
+        this.validahasta = validahasta;
     }
 }

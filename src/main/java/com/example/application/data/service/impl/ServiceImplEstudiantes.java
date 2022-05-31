@@ -22,4 +22,6 @@ public class ServiceImplEstudiantes implements ServiceEstudiantes {
     public List<Estudiantes> ListAllEstudiantes() {
         return (List<Estudiantes>) repositoryEstudiantes.findAll();
     }
+
+
 }

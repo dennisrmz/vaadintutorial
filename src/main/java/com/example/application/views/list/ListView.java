@@ -42,6 +42,21 @@ public class ListView extends VerticalLayout {
         
     }
 
+    private Component getToolbar() {
+        filterText.setPlaceholder("Filter by name...");
+        filterText.setClearButtonVisible(true);
+        filterText.setValueChangeMode(ValueChangeMode.LAZY);
+        filterText.addValueChangeListener(e -> updateList());
+
+        Button addContactButton = new Button("Add Contact");
+        addContactButton.addClickListener(e -> addContact());
+
+        HorizontalLayout toolbar = new HorizontalLayout(filterText, addContactButton);
+        toolbar.addClassName("toolbar");
+
+        return toolbar;
+    }
+
     private void closeEditor() {
         form.setContact(null);
         form.setVisible(false);
@@ -83,20 +98,7 @@ public class ListView extends VerticalLayout {
         closeEditor();
     }
 
-    private Component getToolbar() {
-        filterText.setPlaceholder("Filter by name...");
-        filterText.setClearButtonVisible(true);
-        filterText.setValueChangeMode(ValueChangeMode.LAZY);
-        filterText.addValueChangeListener(e -> updateList());
 
-        Button addContactButton = new Button("Add Contact");
-        addContactButton.addClickListener(e -> addContact());
-
-        HorizontalLayout toolbar = new HorizontalLayout(filterText, addContactButton);
-        toolbar.addClassName("toolbar");
-
-        return toolbar;
-    }
 
     private void addContact() {
         grid.asSingleSelect().clear();

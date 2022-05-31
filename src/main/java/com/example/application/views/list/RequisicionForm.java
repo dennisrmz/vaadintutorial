@@ -14,22 +14,23 @@ import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
+import com.vaadin.flow.data.converter.StringToDoubleConverter;
+import com.vaadin.flow.data.converter.StringToIntegerConverter;
 import com.vaadin.flow.shared.Registration;
 import com.vaadin.flow.component.textfield.TextField;
 
-import java.awt.*;
 
 public class RequisicionForm extends FormLayout {
     Binder<Requisicion> binder = new BeanValidationBinder<>(Requisicion.class);
 
     TextField anexo = new TextField("Anexo");
-    TextField detalleProductosNuevos =  new TextField("Detalle productos nuevos");
-    DatePicker fechaEntrega =  new DatePicker("Fecha Entrega");
-    DatePicker fechaSolicitudR =  new DatePicker("Fecha Solicitud");
-    NumberField jefeDepto =  new NumberField("Jefe Departamento");
-    NumberField recibidoPor =  new NumberField("Recibido Por");
-    NumberField solicitadaPor =  new NumberField("Solicitada Por");
-    DatePicker validaHasta =  new DatePicker("Valida Hasta");
+    TextField detalleproductosnuevos =  new TextField("Detalle productos nuevos");
+    DatePicker fechaentrega =  new DatePicker("Fecha Entrega");
+    DatePicker fechasolicitudr =  new DatePicker("Fecha Solicitud");
+    TextField jefedepto =  new TextField("Jefe Departamento");
+    NumberField recibidopor =  new NumberField("Recibido Por");
+    TextField solicitadapor =  new TextField("Solicitada Por");
+    DatePicker validahasta =  new DatePicker("Valida Hasta");
 
     Button save = new Button("Save");
     Button cancel = new Button("Cancel");
@@ -38,16 +39,16 @@ public class RequisicionForm extends FormLayout {
     public RequisicionForm() {
         addClassName("requisicion-form");
         binder.bindInstanceFields(this);
-
+        System.err.println(anexo);
         add(
                 anexo,
-                detalleProductosNuevos,
-                fechaEntrega,
-                fechaSolicitudR,
-                jefeDepto,
-                recibidoPor,
-                solicitadaPor,
-                validaHasta,
+                detalleproductosnuevos,
+                fechaentrega,
+                fechasolicitudr,
+                jefedepto,
+                recibidopor,
+                solicitadapor,
+                validahasta,
                 createButtonLayout()
         );
     }
@@ -76,10 +77,13 @@ public class RequisicionForm extends FormLayout {
     private void validateAndSave() {
         try {
             binder.writeBean(requisicion);
+        System.err.println("validateAndSave");
+        System.err.println(requisicion.getAnexo());
             fireEvent(new SaveEvent(this, requisicion));
         } catch (ValidationException e) {
-            e.printStackTrace();
-        }
+
+           e.printStackTrace();
+       }
     }
 
 
@@ -89,6 +93,8 @@ public class RequisicionForm extends FormLayout {
         protected RequisicionFormEvent(RequisicionForm source, Requisicion requisicion) {
             super(source, false);
             this.requisicion = requisicion;
+            System.err.println("RequisicionFormEvent");
+            System.err.println(requisicion.getAnexo());
         }
 
         public Requisicion getRequisicion() {
@@ -96,31 +102,29 @@ public class RequisicionForm extends FormLayout {
         }
 
     }
-        public static class SaveEvent extends RequisicionForm.RequisicionFormEvent {
-            SaveEvent(RequisicionForm source, Requisicion requisicion) {
-                super(source, requisicion);
-            }
+    public static class SaveEvent extends RequisicionFormEvent {
+        SaveEvent(RequisicionForm source, Requisicion requisicion) {
+            super(source, requisicion);
+        }
+    }
+
+    public static class DeleteEvent extends RequisicionFormEvent {
+        DeleteEvent(RequisicionForm source, Requisicion requisicion) {
+            super(source, requisicion);
         }
 
-        public static class DeleteEvent extends RequisicionForm.RequisicionFormEvent {
-            DeleteEvent(RequisicionForm source, Requisicion requisicion) {
-                super(source, requisicion);
-            }
+    }
 
+    public static class CloseEvent extends RequisicionFormEvent {
+        CloseEvent(RequisicionForm source) {
+            super(source, null);
         }
+    }
 
-        public static class CloseEvent extends RequisicionForm.RequisicionFormEvent {
-            CloseEvent(RequisicionForm source) {
-                super(source, null);
-            }
-        }
-
-        public <T extends ComponentEvent<?>> Registration addListener(Class<T> eventType,
-                                                                      ComponentEventListener<T> listener) {
-            return getEventBus().addListener(eventType, listener);
-        }
-
-
+    public <T extends ComponentEvent<?>> Registration addListener(Class<T> eventType,
+                                                                  ComponentEventListener<T> listener) {
+        return getEventBus().addListener(eventType, listener);
+    }
 }
 
 
