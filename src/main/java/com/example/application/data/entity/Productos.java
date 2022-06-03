@@ -15,8 +15,8 @@ public class Productos {
     @Id
     @SequenceGenerator(name="produc_seq", sequenceName = "producto_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produc_seq")
-    @Column(name = "idProducto")
-    private Integer idProducto;
+    @Column(name = "idproducto")
+    private Integer idproducto;
     
     @ManyToOne
     private Categorias_Producto idCatProducto;
@@ -30,8 +30,8 @@ public class Productos {
     @ManyToOne
     private Marcas idMarca;//Relacion ManyToOne con Requisiciones
 
-    @Column(name = "precioProducto")
-    private Double precioProducto;
+    @Column(name = "precioproducto")
+    private Double precioproducto;
 
     @Column(name = "caracteristicas")
     private String caracteristicas;
@@ -60,12 +60,12 @@ public class Productos {
     @Column(name = "minimo")
     private Integer minimo;
 
-    public Integer getIdProducto() {
-        return this.idProducto;
+    public Integer getIdproducto() {
+        return this.idproducto;
     }
 
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
+    public void setIdproducto(Integer idproducto) {
+        this.idproducto = idproducto;
     }
 
     public Categorias_Producto getIdCatProducto() {
@@ -100,12 +100,12 @@ public class Productos {
         this.idMarca = idMarca;
     }
 
-    public Double getPrecioProducto() {
-        return this.precioProducto;
+    public Double getPrecioproducto() {
+        return this.precioproducto;
     }
 
-    public void setPrecioProducto(Double precioProducto) {
-        this.precioProducto = precioProducto;
+    public void setPrecioproducto(Double precioproducto) {
+        this.precioproducto = precioproducto;
     }
 
     public String getCaracteristicas() {

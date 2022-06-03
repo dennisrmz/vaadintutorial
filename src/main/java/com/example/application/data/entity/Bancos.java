@@ -14,26 +14,25 @@ public class Bancos {
     @Id
     @SequenceGenerator(name="bankseq", sequenceName = "bancos_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bankseq")
-    @Column(name = "idBanco")
-    private Integer idBanco;
+    @Column(name = "idbanco")
+    private Integer idbanco;
 
-    @Column(name = "nombreBanco")
-    private String nombreBanco;
+    @Column(name = "nombrebanco")
+    private String nombrebanco;
 
-    public Integer getIdBanco() {
-        return this.idBanco;
+    public Integer getIdbanco() {
+        return this.idbanco;
     }
 
-    public void setIdBanco(Integer idBanco) {
-        this.idBanco = idBanco;
+    public void setIdbanco(Integer idbanco) {
+        this.idbanco = idbanco;
     }
 
-    public String getNombreBanco() {
-        return this.nombreBanco;
+    public String getNombrebanco() {
+        return this.nombrebanco;
     }
 
-    public void setNombreBanco(String nombreBanco) {
-        this.nombreBanco = nombreBanco;
+    public void setNombrebanco(String nombrebanco) {
+        this.nombrebanco = nombrebanco;
     }
-
 }

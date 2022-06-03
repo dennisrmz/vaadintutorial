@@ -14,25 +14,25 @@ public class Beneficios {
     @Id
     @SequenceGenerator(name="beneseq", sequenceName = "beneficio_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "beneseq")
-    @Column(name = "idBeneficio")
-    private Integer idBeneficio;
+    @Column(name = "idbeneficio")
+    private Integer idbeneficio;
 
-    @Column(name = "nombreBeneficio")
-    private String nombreBeneficio;
+    @Column(name = "nombrebeneficio")
+    private String nombrebeneficio;
 
-    public Integer getIdBeneficio() {
-        return this.idBeneficio;
+    public Integer getIdbeneficio() {
+        return this.idbeneficio;
     }
 
-    public void setIdBeneficio(Integer idBeneficio) {
-        this.idBeneficio = idBeneficio;
+    public void setIdbeneficio(Integer idbeneficio) {
+        this.idbeneficio = idbeneficio;
     }
 
-    public String getNombreBeneficio() {
-        return this.nombreBeneficio;
+    public String getNombrebeneficio() {
+        return this.nombrebeneficio;
     }
 
-    public void setNombreBeneficio(String nombreBeneficio) {
-        this.nombreBeneficio = nombreBeneficio;
+    public void setNombrebeneficio(String nombrebeneficio) {
+        this.nombrebeneficio = nombrebeneficio;
     }
 }

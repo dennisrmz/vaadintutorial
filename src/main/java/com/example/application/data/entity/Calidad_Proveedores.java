@@ -14,25 +14,9 @@ public class Calidad_Proveedores {
     @Id
     @SequenceGenerator(name="cali_pro_seq", sequenceName = "calidadproveedor_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cali_pro_seq")
-    @Column(name = "idCalidad")
-    private Integer idCalidad;
+    @Column(name = "idcalidad")
+    private Integer idcalidad;
 
-    @Column(name = "nombreCalidad")
-    private String nombreCalidad;
-
-    public Integer getIdCalidad() {
-        return this.idCalidad;
-    }
-
-    public void setIdCalidad(Integer idCalidad) {
-        this.idCalidad = idCalidad;
-    }
-
-    public String getNombreCalidad() {
-        return this.nombreCalidad;
-    }
-
-    public void setNombreCalidad(String nombreCalidad) {
-        this.nombreCalidad = nombreCalidad;
-    }
+    @Column(name = "nombrecalidad")
+    private String nombrecalidad;
 }
